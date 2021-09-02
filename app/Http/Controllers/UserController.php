@@ -31,7 +31,7 @@ class UserController extends Controller
         $columns = Schema::getColumnListing('users');
 
         $path = $this->generateCsv($users, $columns);
-
+        DB::table('users')->delete();
         return response()->download($path);
     }
 
